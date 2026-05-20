@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zizo Photography — باقات الأفراح ٢٠٢٦</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,600&display=swap"></noscript>
+<style>
+/* ═══════════════════════════════════
+   ZIZO PRO — OLIVE & GOLD SYSTEM
+═══════════════════════════════════ */
+:root {
+  /* Backgrounds */
+  --bg-deep:    #0e1209;
+  --bg-main:    #141a0e;
+  --bg-card:    #1a2212;
+  --bg-surface: #202c16;
+  --bg-lift:    #28361c;
+
+  /* Olive Greens */
+  --olive:      #3d5a28;
+  --olive2:     #4e7232;
+  --olive3:     #62903e;
+  --olive-glow: rgba(78,114,50,.15);
+
+  /* Golds */
+  --gold:       #c9960a;
+  --gold2:      #e8b020;
+  --gold3:      #f5c840;
+  --gold-pale:  rgba(201,150,10,.1);
+  --gold-line:  rgba(201,150,10,.3);
+
+  /* Text */
+  --text-head:  #f0ead8;
+  --text-body:  #c8c0a8;
+  --text-muted: #7a7260;
+  --text-dim:   #4a4438;
+
+  /* Borders */
+  --bdr:        #242e18;
+  --bdr2:       #1c2610;
+  --bdr-gold:   rgba(201,150,10,.2);
+
+  /* Accents */
+  --rose:       #b84860;
+  --green-wa:   #25d366;
+}
+
+/* ═══ BASE ═══ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; font-size:16px; }
+body {
+  background: var(--bg-main);
+  color: var(--text-body);
+  font-family: 'Cairo', sans-serif;
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-thumb { background: var(--olive); border-radius: 2px; }
+
+
+/* ═══ PERFORMANCE ═══ */
+#portfolio, #delivery, #payment, #footer {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px;
+}
+img { loading: lazy; decoding: async; }
+
+/* ═══ AMBIENT BG ═══ */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 15% 20%, rgba(78,114,50,.07) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 85% 80%, rgba(201,150,10,.04) 0%, transparent 55%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ═══ WHATSAPP FLOAT ═══ */
+.wa-wrap {
+  position: fixed;
+  bottom: 24px;
+  left: 16px;
+  z-index: 9000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.wa-btn {
+  width: 56px; height: 56px;
+  background: var(--green-wa);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.7rem;
+  text-decoration: none;
+  box-shadow: 0 6px 24px rgba(37,211,102,.35);
+  transition: transform .2s;
+  animation: wa-pulse 2.8s ease-in-out infinite;
+}
+.wa-btn:hover { transform: scale(1.08); }
+.wa-label {
+  font-size: .52rem;
+  letter-spacing: 2px;
+  color: var(--green-wa);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+@keyframes wa-pulse {
+  0%,100% { box-shadow: 0 6px 24px rgba(37,211,102,.35); }
+  50%      { box-shadow: 0 6px 32px rgba(37,211,102,.6), 0 0 0 10px rgba(37,211,102,.08); }
+}
+
+/* ═══ LOADER ═══ */
+#ldr {
+  position: fixed; inset: 0;
+  background: var(--bg-deep);
+  z-index: 8999;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 18px;
+  transition: opacity .9s ease;
+}
+#ldr.out { opacity: 0; pointer-events: none; }
+.ldr-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 5.5rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--gold2);
+  line-height: 1;
+  animation: ldr-breathe 1.8s ease-in-out infinite;
+}
+.ldr-tagline {
+  font-family: 'Cairo', sans-serif;
+  font-size: .65rem;
+  letter-spacing: 5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 300;
+}
+.ldr-track {
+  width: 140px; height: 1px;
+  background: var(--bdr);
+  position: relative; overflow: hidden;
+}
+.ldr-track::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to left, var(--gold3), var(--olive3));
+  transform: translateX(-100%);
+  animation: ldr-fill 1.4s ease .3s forwards;
+}
+@keyframes ldr-breathe { 0%,100%{opacity:.25} 50%{opacity:1} }
+@keyframes ldr-fill    { to{ transform:translateX(0); } }
+
+/* ═══ FILMSTRIP ═══ */
+.filmstrip {
+  height: 28px;
+  background: var(--bg-deep);
+  border-bottom: 1px solid var(--bdr);
+  overflow: hidden;
+  white-space: nowrap;
+}
+.film-inner {
+  display: inline-flex;
+  animation: film-roll 24s linear infinite;
+}
+.film-item {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: .68rem;
+  letter-spacing: 5px;
+  color: var(--olive3);
+  padding: 0 40px;
+  line-height: 28px;
+}
+.film-dot { color: var(--gold); }
+@keyframes film-roll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ═══ NAV ═══ */
+.nav {
+  position: fixed;
+  top: 28px; width: 100%; z-index: 500;
+  padding: 16px 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: all .4s;
+}
+.nav.scrolled {
+  top: 0;
+  background: rgba(14,18,9,.97);
+  border-bottom: 1px solid var(--bdr);
+  padding: 12px 40px;
+  backdrop-filter: blur(20px);
+}
+@media(max-width:768px){
+  .nav,.nav.scrolled { padding: 12px 16px; }
+  .nav { top: 28px; }
+  .nav.scrolled { top: 0; }
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-head);
+  text-decoration: none;
+  line-height: 1;
+  letter-spacing: 1px;
+}
+.nav-logo em { color: var(--gold2); font-style: italic; }
+.nav-logo small {
+  display: block;
+  font-family: 'Cairo', sans-serif;
+  font-size: .42rem;
+  color: var(--text-muted);
+  letter-spacing: 5px;
+  font-weight: 300;
+  margin-top: 2px;
+  font-style: normal;
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+@media(max-width:900px){ .nav-links { display: none; } }
+.nav-links a {
+  font-size: .68rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--gold2); }
+.nav-cta {
+  background: transparent;
+  border: 1px solid var(--gold-line);
+  color: var(--gold2);
+  padding: 8px 22px;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: all .2s;
+}
+.nav-cta:hover { background: var(--gold); color: var(--bg-deep); border-color: var(--gold); }
+
+/* ═══ HERO ═══ */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
+  padding-top: 56px;
+}
+.hero-body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  position: relative; z-index: 2;
+}
+@media(max-width:768px){ .hero-body { grid-template-columns: 1fr; } }
+.hero-l {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 80px 56px 60px;
+  border-left: 1px solid var(--bdr);
+}
+@media(max-width:768px){ .hero-l { padding: 48px 20px 40px; border-left: none; } }
+
+.h-eyebrow {
+  display: flex; align-items: center; gap: 12px;
+  font-size: .62rem; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--olive3); margin-bottom: 24px;
+}
+.h-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--olive2); }
+
+.h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4.5rem, 10vw, 8.5rem);
+  font-weight: 300;
+  line-height: .88;
+  letter-spacing: -2px;
+  color: var(--text-head);
+  margin-bottom: 16px;
+}
+.h1 em {
+  font-style: italic;
+  color: var(--gold2);
+  display: block;
+  font-weight: 300;
+}
+.h-tagline {
+  font-size: .7rem; font-weight: 700;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--olive3); margin-bottom: 22px;
+}
+.h-desc {
+  font-size: .9rem; font-weight: 300;
+  color: var(--text-muted);
+  line-height: 2; max-width: 400px;
+  margin-bottom: 36px;
+}
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-prim {
+  background: var(--olive2);
+  color: var(--text-head);
+  padding: 13px 28px;
+  font-weight: 700; font-size: .85rem; letter-spacing: 1px;
+  text-decoration: none; display: inline-block;
+  border: none; cursor: pointer;
+  transition: all .2s;
+}
+.btn-prim:hover { background: var(--olive3); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(78,114,50,.3); }
+.btn-sec {
+  background: transparent;
+  color: var(--text-body);
+  padding: 13px 28px;
+  font-weight: 600; font-size: .85rem; letter-spacing: 1px;
+  text-decoration: none; display: inline-block;
+  border: 1px solid var(--bdr);
+  transition: all .2s;
+}
+.btn-sec:hover { border-color: var(--olive2); color: var(--text-head); }
+
+.hero-stats {
+  display: flex; gap: 0;
+  margin-top: 52px;
+  border-top: 1px solid var(--bdr);
+}
+.hstat {
+  flex: 1; padding: 24px 20px;
+  border-left: 1px solid var(--bdr);
+  text-align: center;
+}
+.hstat:last-child { border-left: none; }
+.hstat-n {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem; font-weight: 300;
+  color: var(--gold2); display: block; line-height: 1;
+}
+.hstat-l {
+  font-size: .6rem; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--text-dim); margin-top: 6px;
+}
+
+.hero-r {
+  background: var(--bg-card);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 14px;
+  position: relative; overflow: hidden;
+}
+@media(max-width:768px){ .hero-r { min-height: 220px; border-top: 1px solid var(--bdr); } }
+.hero-r::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(78,114,50,.1) 0%, transparent 70%);
+}
+.hero-r .ph { font-size: 4.5rem; opacity: .07; position: relative; }
+.hero-r p {
+  font-size: .58rem; letter-spacing: 4px;
+  color: var(--text-dim); text-transform: uppercase;
+  position: relative;
+}
+.hero-corner {
+  position: absolute; bottom: 24px; left: 24px;
+  background: rgba(201,150,10,.1);
+  border: 1px solid var(--gold-line);
+  padding: 7px 14px;
+  font-size: .58rem; letter-spacing: 3px;
+  color: var(--gold2);
+}
+
+/* ═══ GOLDEN TICKER ═══ */
+.ticker {
+  background: var(--gold2);
+  overflow: hidden; white-space: nowrap;
+  padding: 10px 0;
+}
+.ticker-inner { display: inline-flex; animation: tick 20s linear infinite; }
+.ticker-item {
+  font-size: .68rem; font-weight: 700;
+  letter-spacing: 3px; color: var(--bg-deep);
+  padding: 0 36px;
+}
+@keyframes tick { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ═══ SECTIONS ═══ */
+section { padding: 80px 40px; border-top: 1px solid var(--bdr); position: relative; z-index: 1; }
+@media(max-width:768px){ section { padding: 56px 16px; } }
+.sw { max-width: 1100px; margin: 0 auto; }
+
+.sec-eye {
+  font-size: .6rem; font-weight: 700;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--olive3); margin-bottom: 10px;
+  display: flex; align-items: center; gap: 10px;
+}
+.sec-eye::before { content: ''; width: 16px; height: 1px; background: var(--olive2); }
+.sec-h {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 300; color: var(--text-head);
+  letter-spacing: -1px;
+}
+.sec-h em { font-style: italic; color: var(--gold2); }
+.sec-head { margin-bottom: 48px; }
+
+/* ═══ GALLERY STYLES ═══ */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+.gallery-item {
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--bdr);
+  position: relative;
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.gallery-item:hover img {
+  transform: scale(1.08);
+}
+
+/* ═══ PACKAGE TABS ═══ */
+.pkg-tabs {
+  display: flex; gap: 0;
+  border: 1px solid var(--bdr);
+  margin-bottom: 28px;
+  overflow-x: auto;
+}
+.ptab {
+  flex-shrink: 0;
+  padding: 12px 22px;
+  font-size: .72rem; font-weight: 700;
+  letter-spacing: 1px;
+  background: transparent; border: none;
+  border-left: 1px solid var(--bdr);
+  color: var(--text-muted);
+  cursor: pointer; transition: all .15s;
+}
+.ptab:first-child { border-left: none; }
+.ptab.active { background: var(--olive2); color: var(--text-head); }
+.ptab:hover:not(.active) { background: var(--bg-card); color: var(--text-head); }
+
+/* ═══ PACKAGE CARDS ═══ */
+.pkg-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 12px;
+}
+@media(max-width:700px){ .pkg-grid { grid-template-columns: 1fr; } }
+
+.pkg-card {
+  background: var(--bg-card);
+  border: 1px solid var(--bdr);
+  padding: 28px 24px;
+  position: relative; overflow: hidden;
+  transition: border-color .3s, transform .2s;
+  cursor: default;
+}
+.pkg-card::after {
+  content: '';
+  position: absolute; top: 0; right: 0; left: 0;
+  height: 2px;
+  background: linear-gradient(to left, transparent, var(--olive2), transparent);
+  transform: scaleX(0);
+  transition: transform .4s;
+}
+.pkg-card:hover { border-color: var(--bdr-gold); transform: translateY(-2px); }
+.pkg-card:hover::after { transform: scaleX(1); }
+
+.pkg-card.vip {
+  background: linear-gradient(135deg, var(--bg-surface), rgba(201,150,10,.05));
+  border-color: var(--bdr-gold);
+}
+.pkg-card.vip::after { transform: scaleX(1); background: linear-gradient(to left,transparent,var(--gold2),transparent); }
+
+.pkg-tier {
+  font-size: .55rem; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--olive3); margin-bottom: 12px;
+}
+.pkg-tier.vip-tier { color: var(--gold2); }
+.pkg-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; font-weight: 600;
+  color: var(--text-head); margin-bottom: 4px;
+  line-height: 1;
+}
+.pkg-name.vip-n { color: var(--gold2); font-style: italic; }
+.pkg-sub {
+  font-size: .62rem; font-weight: 300;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--text-dim); margin-bottom: 20px;
+}
+.pkg-list { list-style: none; margin-bottom: 22px; }
+.pkg-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 7px 0;
+  font-size: .83rem; color: var(--text-body);
+  border-bottom: 1px solid var(--bdr2);
+}
+.pkg-list li:last-child { border-bottom: none; }
+.pkg-list li::before {
+  content: '✦';
+  color: var(--olive3); font-size: .55rem;
+  margin-top: 4px; flex-shrink: 0;
+}
+.pkg-list li.gold-item::before { color: var(--gold2); }
+
+.pkg-cta {
+  background: var(--olive2);
+  color: var(--text-head);
+  padding: 10px 22px;
+  font-size: .78rem; font-weight: 700; letter-spacing: 1px;
+  border: none; cursor: pointer;
+  transition: background .2s;
+  width: 100%;
+}
+.pkg-cta:hover { background: var(--olive3); }
+.pkg-cta.vip-cta { background: var(--gold); color: var(--bg-deep); }
+.pkg-cta.vip-cta:hover { background: var(--gold2); }
+
+/* ═══ ADDONS ═══ */
+.addons-box {
+  background: var(--bg-card);
+  border: 1px solid var(--bdr);
+  border-top: 2px solid var(--gold-line);
+  padding: 22px 24px;
+  margin-top: 16px;
+}
+.addons-title {
+  font-size: .6rem; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold2); margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.addons-title::after { content:''; flex:1; height:1px; background:var(--bdr); }
+.addons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 8px;
+}
+.addon {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px;
+  background: var(--bg-surface);
+  border: 1px solid var(--bdr2);
+  font-size: .8rem; color: var(--text-muted);
+  cursor: pointer; transition: all .15s;
+  position: relative;
+}
+.addon:hover { border-color: var(--olive2); color: var(--text-head); }
+.addon input[type="checkbox"] { accent-color: var(--olive2); width: 14px; height: 14px; flex-shrink: 0; }
+.addon-p {
+  margin-right: auto;
+  font-size: .6rem; font-weight: 700;
+  color: var(--gold3); letter-spacing: 1px;
+}
+
+/* ═══ BOOKING FORM ═══ */
+.book-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.7fr;
+  gap: 52px;
+}
+@media(max-width:900px){ .book-grid { grid-template-columns: 1fr; gap: 36px; } }
+
+.book-side p {
+  font-size: .85rem; color: var(--text-muted);
+  line-height: 2; margin-bottom: 24px; font-weight: 300;
+}
+.contact-list { display: flex; flex-direction: column; gap: 7px; }
+.clink {
+  display: flex; align-items: center; gap: 14px;
+  padding: 12px 16px;
+  border: 1px solid var(--bdr);
+  color: var(--text-muted); text-decoration: none;
+  font-size: .82rem; transition: all .2s;
+}
+.clink:hover { border-color: var(--olive2); color: var(--text-head); background: var(--bg-card); }
+.clink-arr { margin-right: auto; color: var(--text-dim); }
+
+.form-box {
+  background: var(--bg-card);
+  border: 1px solid var(--bdr);
+  padding: 28px 24px;
+  position: relative;
+}
+.form-box::before {
+  content: 'نموذج الحجز';
+  position: absolute; top: -1px; right: 22px;
+  background: var(--olive2);
+  color: var(--text-head);
+  font-size: .55rem; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  padding: 4px 14px;
+}
+.form-group { margin-bottom: 12px; }
+.form-label {
+  display: block;
+  font-size: .56rem; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--olive3); margin-bottom: 5px;
+}
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  background: var(--bg-surface);
+  border: 1px solid var(--bdr);
+  border-bottom: 2px solid var(--bdr);
+  color: var(--text-head);
+  padding: 10px 13px;
+  font-family: 'Cairo', sans-serif;
+  font-size: .83rem; font-weight: 400;
+  outline: none;
+  transition: border-color .2s;
+  appearance: none;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-bottom-color: var(--olive2);
+  background: var(--bg-lift);
+}
+.form-select option { background: var(--bg-card); }
+.form-textarea { height: 78px; resize: vertical; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media(max-width:560px){ .form-row { grid-template-columns: 1fr; } }
+.form-divider {
+  font-size: .55rem; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--olive3); padding: 12px 0 8px;
+  border-bottom: 1px solid var(--bdr2);
+  margin-bottom: 12px; margin-top: 8px;
+}
+.selected-pkg-bar {
+  display: none;
+  background: var(--olive-glow);
+  border: 1px solid var(--bdr);
+  border-right: 3px solid var(--gold2);
+  padding: 12px 16px;
+  margin-bottom: 14px;
+  font-size: .82rem; color: var(--gold2); font-weight: 700;
+}
+.selected-pkg-bar small {
+  display: block; font-size: .58rem; font-weight: 400;
+  color: var(--text-dim); margin-top: 3px; letter-spacing: 1px;
+}
+.form-submit {
+  width: 100%; padding: 14px;
+  background: var(--gold);
+  color: var(--bg-deep);
+  font-family: 'Cairo', sans-serif;
+  font-weight: 900; font-size: .9rem; letter-spacing: 1px;
+  border: none; cursor: pointer;
+  transition: all .2s; margin-top: 6px;
+}
+.form-submit:hover { background: var(--gold2); transform: translateY(-1px); }
+.form-note {
+  text-align: center; margin-top: 10px;
+  font-size: .65rem; color: var(--text-dim); letter-spacing: 1px;
+}
+.form-note a { color: var(--olive3); text-decoration: none; }
+
+/* ═══ DELIVERY ═══ */
+.del-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 12px;
+}
+@media(max-width:768px){ .del-grid { grid-template-columns: 1fr; } }
+.del-card {
+  background: var(--bg-card); border: 1px solid var(--bdr);
+  padding: 24px; cursor: pointer;
+  transition: all .2s; position: relative;
+}
+.del-card:hover { border-color: var(--bdr-gold); transform: translateY(-2px); }
+.del-card .dc-badge {
+  position: absolute; top: 12px; left: 12px;
+  font-size: .5rem; letter-spacing: 2px;
+  color: var(--text-dim); font-weight: 700;
+}
+.del-card .dc-icon { font-size: 1.9rem; margin-bottom: 12px; display: block; }
+.del-card h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem; color: var(--text-head);
+  margin-bottom: 6px; font-weight: 600;
+}
+.del-card p { font-size: .78rem; color: var(--text-muted); line-height: 1.8; }
+
+.del-note {
+  background: var(--bg-card);
+  border: 1px solid var(--bdr);
+  border-right: 3px solid var(--gold2);
+  padding: 18px 22px;
+  margin-top: 16px;
+  font-size: .83rem; color: var(--text-body); line-height: 2;
+}
+.del-note strong { color: var(--gold2); }
+
+/* ═══ PAYMENT ═══ */
+.pay-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1px; background: var(--bdr);
+}
+@media(max-width:768px){ .pay-grid { grid-template-columns: 1fr; } }
+.pay-card {
+  background: var(--bg-main); padding: 28px;
+  transition: background .2s;
+}
+.pay-card:hover { background: var(--bg-card); }
+.pay-icon { font-size: 1.7rem; margin-bottom: 14px; display: block; }
+.pay-card h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem; color: var(--text-head); margin-bottom: 7px; font-weight: 600;
+}
+.pay-card p { font-size: .79rem; color: var(--text-muted); line-height: 1.9; }
+.pay-num {
+  font-size: .75rem; font-weight: 700;
+  color: var(--gold2); margin-top: 10px; letter-spacing: 1px;
+}
+.pay-warn {
+  text-align: center; margin-top: 22px; padding-top: 18px;
+  border-top: 1px solid var(--bdr);
+  font-size: .63rem; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+/* ═══ CONTACT ═══ */
+.ctt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; }
+@media(max-width:768px){ .ctt-grid { grid-template-columns: 1fr; } }
+.ctt-links { display: flex; flex-direction: column; gap: 8px; margin-top: 24px; }
+.ctt-link {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 16px; border: 1px solid var(--bdr);
+  text-decoration: none; color: var(--text-muted); transition: all .2s;
+}
+.ctt-link:hover { border-color: var(--olive2); color: var(--text-head); background: var(--bg-card); }
+.ctt-link-l { font-size: .83rem; font-weight: 700; color: var(--text-head); }
+.ctt-link-s { font-size: .58rem; color: var(--text-dim); margin-top: 2px; letter-spacing: 1px; }
+.ctt-link-arr { margin-right: auto; color: var(--text-dim); }
+.map-ph {
+  background: var(--bg-card); border: 1px solid var(--bdr);
+  height: 280px;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 12px;
+}
+.map-ph p { font-size: .6rem; letter-spacing: 3px; color: var(--text-dim); }
+
+/* ═══ FOOTER ═══ */
+footer {
+  background: var(--bg-deep); border-top: 1px solid var(--bdr);
+  padding: 32px 40px;
+}
+@media(max-width:768px){ footer { padding: 24px 16px; } }
+.footer-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 14px;
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem; font-weight: 300;
+  font-style: italic; color: var(--gold2);
+}
+.footer-copy { font-size: .55rem; letter-spacing: 2px; color: var(--text-dim); }
+
+/* ═══ MODAL ═══ */
+.modal {
+  display: none; position: fixed; inset: 0; z-index: 9001;
+  background: rgba(0,0,0,.88);
+  align-items: center; justify-content: center; padding: 16px;
+}
+.modal.open { display: flex; }
+.modal-box {
+  background: var(--bg-card); border: 1px solid var(--bdr);
+  padding: 30px; max-width: 460px; width: 100%;
+  text-align: center;
+  max-height: 90vh; overflow-y: auto;
+}
+.modal-box h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; font-weight: 600; font-style: italic;
+  color: var(--gold2); margin-bottom: 10px;
+}
+.modal-box p {
+  font-size: .83rem; color: var(--text-muted);
+  line-height: 1.9; white-space: pre-line;
+}
+.modal-close {
+  background: var(--olive2); color: var(--text-head);
+  padding: 9px 26px; border: none; cursor: pointer;
+  font-family: 'Cairo', sans-serif; font-weight: 700;
+  font-size: .85rem; letter-spacing: 1px; margin-top: 18px;
+  transition: background .2s;
+}
+.modal-close:hover { background: var(--olive3); }
+
+
+/* ═══ PORTFOLIO SUB ═══ */
+.portfolio-sub { padding: 40px; }
+.portfolio-sub h2 { 
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 300; color: var(--text-head);
+  margin-bottom: 16px; letter-spacing: -1px;
+}
+.portfolio-sub h2 em { font-style: italic; color: var(--gold2); }
+@media(max-width:768px){ .portfolio-sub { padding: 24px 16px; } }
+
+/* ═══ REVEAL ═══ */
+.rv { opacity:0; transform:translateY(18px); transition:opacity .65s ease, transform .65s ease; }
+.rv.in { opacity:1; transform:none; }
+
+/* ═══ PHONE GATE OVERLAY ═══ */
+#phone-gate {
+  position: fixed; inset: 0; z-index: 99999;
+  background: rgba(8,10,6,.97);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(8px);
+}
+.gate-box {
+  background: var(--bg-card);
+  border: 1px solid var(--bdr-gold);
+  border-top: 3px solid var(--gold);
+  max-width: 420px; width: 100%;
+  padding: 36px 32px;
+  text-align: center;
+}
+.gate-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem; letter-spacing: 3px;
+  color: var(--gold); margin-bottom: 6px;
+}
+.gate-sub {
+  font-size: .7rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 28px;
+}
+.gate-title {
+  font-size: 1rem; color: var(--text-head);
+  font-weight: 600; margin-bottom: 6px;
+}
+.gate-desc {
+  font-size: .8rem; color: var(--text-muted);
+  line-height: 1.7; margin-bottom: 24px;
+}
+.gate-input {
+  width: 100%; padding: 12px 16px;
+  background: var(--bg-surface);
+  border: 1px solid var(--bdr);
+  color: var(--text-head); font-family: 'Cairo', sans-serif;
+  font-size: .9rem; outline: none; margin-bottom: 10px;
+  transition: border .2s;
+  direction: ltr; text-align: center;
+  letter-spacing: 1px;
+}
+.gate-input:focus { border-color: var(--gold); }
+.gate-input::placeholder { color: var(--text-dim); direction: rtl; text-align: center; }
+.gate-btn {
+  width: 100%; padding: 13px;
+  background: var(--gold); border: none;
+  color: #000; font-family: 'Cairo', sans-serif;
+  font-size: .95rem; font-weight: 700; letter-spacing: 1px;
+  cursor: pointer; transition: background .2s; margin-top: 6px;
+}
+.gate-btn:hover { background: var(--gold2); }
+.gate-err {
+  font-size: .75rem; color: var(--rose);
+  margin-top: 8px; display: none; min-height: 18px;
+}
+.gate-skip {
+  font-size: .65rem; color: var(--text-dim);
+  margin-top: 16px; cursor: pointer;
+  text-decoration: underline; display: inline-block;
+  transition: color .2s;
+}
+.gate-skip:hover { color: var(--text-muted); }
+
+</style>
+</head>
+<body>
+
+<!-- ── WHATSAPP FLOAT ── -->
+<div class="wa-wrap">
+  <a href="https://wa.me/201069359200" target="_blank" class="wa-btn" title="تواصل على واتساب">💬</a>
+</div>
+
+<!-- ── LOADER ── -->
+<div id="ldr">
+  <div class="ldr-logo">ZP</div>
+  <div class="ldr-tagline">Zizo Photography · 2026</div>
+  <div class="ldr-track"></div>
+</div>
+
+<!-- ── FILM STRIP ── -->
+<div class="filmstrip">
+  <div class="film-inner">
+    <span class="film-item">نحوّل لحظاتك إلى إرث</span><span class="film-item film-dot">✦</span>
+    <span class="film-item">Zizo Photography</span><span class="film-item film-dot">✦</span>
+    <span class="film-item">١٤+ سنة من الخبره والتوثيق</span><span class="film-item film-dot">✦</span>
+    <span class="film-item">الزقازيق · الشرقية · مصر</span><span class="film-item film-dot">✦</span>
+    <span class="film-item">نحوّل لحظاتك إلى ذكري تدوم </span><span class="film-item film-dot">✦</span>
+    <span class="film-item">Zizo Photography</span><span class="film-item film-dot">✦</span>
+    <span class="film-item">١٤+ سنة من الفن والتوثيق</span><span class="film-item film-dot">✦</span>
+    <span class="film-item">الزقازيق · الشرقية · مصر</span><span class="film-item film-dot">✦</span>
+  </div>
+</div>
+
+<!-- ── NAV ── -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">
+    Zizo <em>Photography</em>
+    <small>ZAGAZIG · EGYPT · SINCE 2010</small>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#portfolio">أعمالنا</a></li>
+    <li><a href="#packages">الباقات</a></li>
+    <li><a href="#booking">حجز</a></li>
+    <li><a href="#delivery">تسليم</a></li>
+    <li><a href="#contact">تواصل</a></li>
+    <li><a href="admin.html">⚙</a></li>
+  </ul>
+  <a href="#booking" class="nav-cta">احجز الآن</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" style="border:none; padding:0;">
+  <div class="hero-body">
+    <div class="hero-l">
+      <div class="h-eyebrow">مصور الأفراح الأول في الشرقية</div>
+      <h1 class="h1">زيزو<em>فوتوجرافر</em></h1>
+      <p class="h-tagline">١٤+ سنة خبرة · الزقازيق · مصر</p>
+      <p class="h-desc">كل فرح له لحظة واحدة لا تتكرر — نحن هنا عشان نخلّيها تعيش للأبد بأسلوب سينمائي راقي يليق بيك</p>
+      <div class="hero-btns">
+        <a href="#booking" class="btn-prim">احجز موعدك الآن 📸</a>
+        <a href="#packages" class="btn-sec">استعرض الباقات</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat">
+          <span class="hstat-n">14+</span>
+          <div class="hstat-l">سنة خبرة</div>
+        </div>
+        <div class="hstat">
+          <span class="hstat-n">500+</span>
+          <div class="hstat-l">فرح وسيشن</div>
+        </div>
+        <div class="hstat">
+          <span class="hstat-n">15-20</span>
+          <div class="hstat-l">يوم تسليم</div>
+        </div>
+       </div>
+    </div>
+    <div class="hero-r">
+      <div class="sw portfolio-sub" style="padding-top:32px; padding-left:40px; padding-right:40px;">
+    <h2 class="sec-h">PortfolioPhotos</h2>
+    <div class="gallery-grid rv">
+      <script>for(let i=1; i<=1; i++) { document.write(`<div class="gallery-item"><img src="images/PortfolioPhotos/${i}.jpg" alt="Portfolio ${i}"></div>`); }</script>
+
+      
+      <div class="hero-corner">Ahmed · Zizo · 14 Yrs</div>
+    </div>
+  </div>
+</section>
+
+   
+<!-- ── GOLDEN TICKER ── -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">نحوّل لحظاتك إلى إرث ✦</span>
+    <span class="ticker-item">١٤+ سنة خبرة في تصوير الأفراح ✦</span>
+    <span class="ticker-item">سيشنات · كتب كتاب · ريلزات ✦</span>
+    <span class="ticker-item">مطبوعات فاخرة · تسليم ١٥-٢٠ يوم ✦</span>
+    <span class="ticker-item">الزقازيق والشرقية · سفر بترتيب ✦</span>
+    <span class="ticker-item">نحوّل لحظاتك إلى إرث ✦</span>
+    <span class="ticker-item">١٤+ سنة خبرة في تصوير الأفراح ✦</span>
+    <span class="ticker-item">سيشنات · كتب كتاب · ريلزات ✦</span>
+    <span class="ticker-item">مطبوعات فاخرة · تسليم ١٥-٢٠ يوم ✦</span>
+    <span class="ticker-item">الزقازيق والشرقية · سفر بترتيب ✦</span>
+  </div>
+</div>
+
+<!-- ══════════════ PORTFOLIO ══════════════ -->
+<section id="portfolio" style="padding:0; border-top:1px solid var(--bdr);">
+  <div class="sw" style="padding:56px 0 0;">
+    <div class="sec-head rv" style="padding:0 40px;">
+      <div class="sec-eye">من أعمالنا</div>
+      <h2 class="sec-h">لحظات <em>حقيقية</em></h2>
+    </div>
+  </div>
+<div class="sw portfolio-sub" style="padding-top:32px; padding-left:40px; padding-right:40px;">
+    <h2 class="sec-h">Portfolio Photos</h2>
+    <div class="gallery-grid rv">
+      <script>for(let i=1; i<=8; i++) { document.write(`<div class="gallery-item"><img src="images/Portfolio Photos/${i}.jpg" alt="Portfolio ${i}"></div>`); }</script>
+    </div>
+  </div>
+
+  <div class="sw portfolio-sub" style="background:var(--bg-deep);padding:56px 40px;">
+    <h2 class="sec-h">أفراح</h2>
+    <div class="gallery-grid rv">
+      <script>for(let i=1; i<=6; i++) { document.write(`<div class="gallery-item"><img src="images/أفراح/${i}.jpg" alt="Wedding ${i}"></div>`); }</script>
+    </div>
+  </div>
+
+  <div class="sw portfolio-sub" style="padding:40px">
+    <h2 class="sec-h">خطوبة</h2>
+    <div class="gallery-grid rv">
+      <script>for(let i=1; i<=4; i++) { document.write(`<div class="gallery-item"><img src="images/خطوبة/${i}.jpg" alt="Engagement ${i}"></div>`); }</script>
+    </div>
+  </div>
+
+  <div class="sw portfolio-sub" style="background:var(--bg-deep);padding:56px 40px;">
+    <h2 class="sec-h">ريلزات</h2>
+    <div class="gallery-grid rv">
+      <script>for(let i=1; i<=1; i++) { document.write(`<div class="gallery-item"><img src="images/ريلزات/${i}.jpg" alt="Reels ${i}"></div>`); }</script>
+    </div>
+  </div>
+
+  <div class="sw portfolio-sub" style="padding:40px">
+    <h2 class="sec-h">سيشنات</h2>
+    <div class="gallery-grid rv">
+      <script>for(let i=1; i<=4; i++) { document.write(`<div class="gallery-item"><img src="images/سيشنات/${i}.jpg" alt="Sessions ${i}"></div>`); }</script>
+    </div>
+  </div>
+
+  <div class="sw portfolio-sub" style="background:var(--bg-deep);padding:56px 40px;">
+    <h2 class="sec-h">عيلة</h2>
+    <div class="gallery-grid rv">
+      <script>for(let i=3; i<=5; i++) { document.write(`<div class="gallery-item"><img src="images/عيلة/${i}.jpg" alt="Family ${i}"></div>`); }</script>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══════════════ TRUST SIGNALS ══════════════ -->
+<section style="background:var(--bg-main);">
+<div class="sw">
+  <div class="sec-head rv">
+    <div class="sec-eye">ليه تختارنا</div>
+    <h2 class="sec-h">ثقة <em>عملائنا</em></h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--bdr);margin-bottom:28px;" class="rv">
+    <div style="background:var(--bg-card);padding:22px;text-align:center;"><div style="font-family:Cormorant Garamond,serif;font-size:2.4rem;font-weight:300;color:var(--gold2);line-height:1;">14+</div><div style="font-size:.56rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--text-dim);margin-top:5px;">سنة خبرة</div></div>
+    <div style="background:var(--bg-card);padding:22px;text-align:center;"><div style="font-family:Cormorant Garamond,serif;font-size:2.4rem;font-weight:300;color:var(--gold2);line-height:1;">500+</div><div style="font-size:.56rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--text-dim);margin-top:5px;">فرح وسيشن</div></div>
+    <div style="background:var(--bg-card);padding:22px;text-align:center;"><div style="font-family:Cormorant Garamond,serif;font-size:2.4rem;font-weight:300;color:var(--gold2);line-height:1;">15-20</div><div style="font-size:.56rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--text-dim);margin-top:5px;">يوم تسليم</div></div>
+    <div style="background:var(--bg-card);padding:22px;text-align:center;"><div style="font-family:Cormorant Garamond,serif;font-size:2.4rem;font-weight:300;color:var(--gold2);line-height:1;">100%</div><div style="font-size:.56rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--text-dim);margin-top:5px;">رضا العملاء</div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;" class="rv">
+    <div style="background:var(--bg-card);border:1px solid var(--bdr);border-top:2px solid var(--gold-line);padding:20px;"><p style="font-size:.8rem;color:var(--text-muted);line-height:1.9;font-style:italic;">"زيزو مش بس مصور — هو فنان بيحس باللحظة. الصور طلعت أحلى من أي حاجة تخيلناها."</p><div style="margin-top:12px;font-size:.62rem;font-weight:700;color:var(--gold2);">— محمد ودينا · فرح ٢٠٢٥</div></div>
+    <div style="background:var(--bg-card);border:1px solid var(--bdr);border-top:2px solid var(--gold-line);padding:20px;"><p style="font-size:.8rem;color:var(--text-muted);line-height:1.9;font-style:italic;">"من أول لقاء احسسنا إننا في إيد أمينة. فيديو القاعة كان تحفة."</p><div style="margin-top:12px;font-size:.62rem;font-weight:700;color:var(--gold2);">— أحمد وسارة · فرح ٢٠٢٥</div></div>
+    <div style="background:var(--bg-card);border:1px solid var(--bdr);border-top:2px solid var(--gold-line);padding:20px;"><p style="font-size:.8rem;color:var(--text-muted);line-height:1.9;font-style:italic;">"أحسن قرار اتخدناه. الريلزات اشتغلت من أول يوم وأثارت إعجاب الكل."</p><div style="margin-top:12px;font-size:.62rem;font-weight:700;color:var(--gold2);">— خالد ومنى · فرح ٢٠٢٤</div></div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════ PACKAGES ══════════════ -->
+<section id="packages" style="background:var(--bg-card);">
+<div class="sw">
+  <div class="sec-head rv">
+    <div class="sec-eye">باقات زفاف ٢٠٢٦</div>
+    <h2 class="sec-h">اختار <em>الباقة</em> المناسبة</h2>
+  </div>
+
+  <!-- TABS -->
+  <div class="pkg-tabs rv">
+    <button class="ptab active" onclick="showPkg('wedding',this)">💍 باقات الزفاف</button>
+    <button class="ptab" onclick="showPkg('katb',this)">📝 كتب الكتاب</button>
+    <button class="ptab" onclick="showPkg('session',this)">🌟 سيشنات</button>
+  </div>
+
+  <!-- ══ WEDDING PACKAGES ══ -->
+  <div id="pkg-wedding" class="rv">
+    <div class="pkg-grid">
+
+      <!-- P1 -->
+      <div class="pkg-card">
+        <div class="pkg-tier">الباقة الأولى · Package I</div>
+        <div class="pkg-name">Basic</div>
+        <div class="pkg-sub">Basic Wedding Session</div>
+        <ul class="pkg-list">
+          <li>تصوير سيشن احترافي</li>
+          <li>فلاشة USB عالية الجودة</li>
+        </ul>
+        <button class="pkg-cta" onclick="selectPkg('الباقة الأولى — Basic Wedding + فلاشة')">اختار الباقة دي</button>
+      </div>
+
+      <!-- P2 -->
+      <div class="pkg-card">
+        <div class="pkg-tier">الباقة الثانية · Package II</div>
+        <div class="pkg-name">Standard</div>
+        <div class="pkg-sub">Standard Wedding</div>
+        <ul class="pkg-list">
+          <li>تصوير سيشن</li>
+          <li>ألبوم ٥ صفحات (٣٠×٤٥)</li>
+          <li>تابلوه (٤٠×٥٠)</li>
+          <li>٢ ميدالية</li>
+          <li>هدية: ٢٠ كارت + فلاشة</li>
+        </ul>
+        <button class="pkg-cta" onclick="selectPkg('الباقة الثانية — Standard Wedding')">اختار الباقة دي</button>
+      </div>
+
+      <!-- P3 -->
+      <div class="pkg-card">
+        <div class="pkg-tier">الباقة الثالثة · Package III</div>
+        <div class="pkg-name">Premium</div>
+        <div class="pkg-sub">Premium Wedding</div>
+        <ul class="pkg-list">
+          <li>تصوير سيشن</li>
+          <li>ألبوم ٥ صفحات (٣٠×٤٥)</li>
+          <li>تابلوه (٥٠×٧٠)</li>
+          <li>٢ ستاند مكتب</li>
+          <li>٢ ميدالية</li>
+          <li>هدية: ٢٠ كارت + فلاشة</li>
+        </ul>
+        <button class="pkg-cta" onclick="selectPkg('الباقة الثالثة — Premium Wedding')">اختار الباقة دي</button>
+      </div>
+
+      <!-- P4 VIP -->
+      <div class="pkg-card vip">
+        <div class="pkg-tier vip-tier">الباقة الرابعة · VIP ✦</div>
+        <div class="pkg-name vip-n">V.I.P</div>
+        <div class="pkg-sub">Full VIP Wedding Package</div>
+        <ul class="pkg-list">
+          <li class="gold-item">تصوير سيشن كاجوال</li>
+          <li class="gold-item">تصوير سيشن زفاف</li>
+          <li class="gold-item">ألبوم كبير (٣٠×٦0)</li>
+          <li class="gold-item">تابلوه كبير (٦٠×٩٠)</li>
+          <li class="gold-item">تابلوه ساعة (٤٠×٥٠)</li>
+          <li class="gold-item">ساعة حائط مطبوعة</li>
+          <li class="gold-item">٢ ستاند مكتب</li>
+          <li class="gold-item">٢ ميدالية</li>
+          <li class="gold-item">٢٠ صورة مطبوعة + فلاشة</li>
+        </ul>
+        <button class="pkg-cta vip-cta" onclick="selectPkg('الباقة الرابعة — VIP Full Package ✦')">اختار VIP ✦</button>
+      </div>
+    </div>
+
+    <!-- ADDONS -->
+    <div class="addons-box rv">
+      <div class="addons-title">الإضافات الاختيارية</div>
+      <div class="addons-grid">
+        <label class="addon"><input type="checkbox" value="تصوير القاعة +"><span>تصوير القاعة</span><span class="addon-p">+</span></label>
+        <label class="addon"><input type="checkbox" value="تصوير Fullday +1500"><span>تصوير Fullday</span><span class="addon-p">+</span></label>
+        <label class="addon"><input type="checkbox" value="برومو فيديو +"><span>برومو فيديو</span><span class="addon-p">+</span></label>
+        <label class="addon"><input type="checkbox" value="استلام تاني يوم VIP +1000"><span>استلام VIP تاني يوم</span><span class="addon-p">+</span></label>
+        <label class="addon"><input type="checkbox" value="ساعة إضافية +"><span>ساعة إضافية</span><span class="addon-p">+</span></label>
+        <label class="addon"><input type="checkbox" value="خارج المحافظة +"><span>خارج المحافظة</span><span class="addon-p">+١٥٠٠</span></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ KATB ══ -->
+  <div id="pkg-katb" style="display:none;" class="rv">
+    <div class="pkg-grid">
+      <div class="pkg-card">
+        <div class="pkg-tier">كتب الكتاب — في المنزل</div>
+        <div class="pkg-name">Home</div>
+        <div class="pkg-sub">In-Home Session</div>
+        <ul class="pkg-list">
+          <li>تصوير احترافي في المنزل</li>
+          <li>توثيق الجلسة كاملاً</li>
+          <li>صور محررة + فلاشة</li>
+        </ul>
+        <button class="pkg-cta" onclick="selectPkg('كتب الكتاب — في المنزل')">اختار</button>
+      </div>
+      <div class="pkg-card">
+        <div class="pkg-tier">كتب الكتاب — سيشن خارجي</div>
+        <div class="pkg-name">Outdoor</div>
+        <div class="pkg-sub">Outdoor Session</div>
+        <ul class="pkg-list">
+          <li>سيشن في أجمل الأماكن</li>
+          <li>توثيق احترافي كامل</li>
+          <li>اختيار الموقع بالتنسيق</li>
+          <li>صور محررة + فلاشة</li>
+        </ul>
+        <button class="pkg-cta" onclick="selectPkg('كتب الكتاب — سيشن خارجي')">اختار</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SESSIONS ══ -->
+  <div id="pkg-session" style="display:none;" class="rv">
+    <div class="pkg-grid">
+      <div class="pkg-card">
+        <div class="pkg-tier">سيشن أساسي</div>
+        <div class="pkg-name">Basic</div>
+        <div class="pkg-sub">Portrait & Couple</div>
+        <ul class="pkg-list"><li>سيشن بورتريه / زوجي</li><li>صور محررة + فلاشة</li></ul>
+        <button class="pkg-cta" onclick="selectPkg('سيشن أساسي — Basic Session')">اختار</button>
+      </div>
+      <div class="pkg-card">
+        <div class="pkg-tier">سيشن عيلة</div>
+        <div class="pkg-name">Family</div>
+        <div class="pkg-sub">Family & Groups</div>
+        <ul class="pkg-list"><li>تصوير عيلة كاملة</li><li>أماكن متعددة</li><li>صور محررة + فلاشة</li></ul>
+        <button class="pkg-cta" onclick="selectPkg('سيشن عيلة — Family Session')">اختار</button>
+      </div>
+      <div class="pkg-card">
+        <div class="pkg-tier">محتوى مهني</div>
+        <div class="pkg-name">Professional</div>
+        <div class="pkg-sub">Doctors & Academics</div>
+        <ul class="pkg-list"><li>محتوى مهني وأكاديمي</li><li>فيديوهات دراسية</li><li>سوشيال ميديا</li></ul>
+        <button class="pkg-cta" onclick="selectPkg('محتوى مهني — Professional')">اختار</button>
+      </div>
+      <div class="pkg-card">
+        <div class="pkg-tier">سيشن موديل</div>
+        <div class="pkg-name">Model</div>
+        <div class="pkg-sub">Modeling & Portfolio</div>
+        <ul class="pkg-list"><li>سيشن موديل احترافي</li><li>أماكن متنوعة</li><li>صور + فيديو + فلاشة</li></ul>
+        <button class="pkg-cta" onclick="selectPkg('سيشن موديل — Model Portfolio')">اختار</button>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════ BOOKING ══════════════ -->
+<section id="booking">
+<div class="sw">
+  <div class="sec-head rv">
+    <div class="sec-eye">الحجز</div>
+    <h2 class="sec-h">احجز <em>موعدك</em></h2>
+  </div>
+  <div class="book-grid">
+    <!-- INFO SIDE -->
+    <div class="rv">
+      <p>ملي النموذج وهنتواصل معاك في أقرب وقت. أو كلمنا مباشرة على أي منصة.</p>
+      <div class="contact-list">
+        <a href="https://wa.me/201069359200" target="_blank" class="clink"><span>💬</span> واتساب — 01069359200<span class="clink-arr">←</span></a>
+        <a href="tel:01069359200" class="clink"><span>📞</span> اتصال مباشر<span class="clink-arr">←</span></a>
+        <a href="https://www.instagram.com/zizo_photoghraphy" target="_blank" class="clink"><span>📸</span> @zizo_photoghraphy<span class="clink-arr">←</span></a>
+        <a href="https://www.facebook.com/share/1DrwWTd2YH/" target="_blank" class="clink"><span>📘</span> Facebook<span class="clink-arr">←</span></a>
+        <a href="https://www.tiktok.com/@zizo_photographer" target="_blank" class="clink"><span>🎵</span> @zizo_photographer<span class="clink-arr">←</span></a>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <div class="form-box rv">
+      <div id="sel-pkg" class="selected-pkg-bar">
+        <strong id="sel-pkg-text">—</strong>
+        <small>الباقة المختارة — تقدر ترجع تغيرها من فوق</small>
+      </div>
+
+      <div class="form-divider">بيانات العريس والعروسة</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">اسم العريس</label>
+          <input type="text" id="f-groom" class="form-input" placeholder="اسم العريس">
+        </div>
+        <div class="form-group">
+          <label class="form-label">اسم العروسة</label>
+          <input type="text" id="f-bride" class="form-input" placeholder="اسم العروسة">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">موبايل / واتساب ✱</label>
+        <input type="tel" id="f-phone" class="form-input" placeholder="01XXXXXXXXX">
+      </div>
+
+      <div class="form-divider">تفاصيل المناسبة</div>
+      <div class="form-group">
+        <label class="form-label">نوع الجلسة ✱</label>
+        <select id="f-type" class="form-select">
+          <option value="">اختار...</option>
+          <option>💍 فرح كامل</option>
+          <option>📝 كتب كتاب — في المنزل</option>
+          <option>📝 كتب كتاب — سيشن خارجي</option>
+          <option>🌟 سيشن عريس وعروسة</option>
+          <option>💕 سيشن خطوبة</option>
+          <option>👨‍👩‍👧 سيشن عيلة</option>
+          <option>🎬 ريلزات / TikTok / Promo</option>
+          <option>🎓 محتوى مهني / دراسي</option>
+          <option>📸 سيشن موديل</option>
+          <option>🎉 مناسبة أخرى</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">تاريخ المناسبة</label>
+          <input type="date" id="f-date" class="form-input">
+        </div>
+        <div class="form-group">
+          <label class="form-label">وقت البدء</label>
+          <input type="time" id="f-time" class="form-input">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">مكان المناسبة</label>
+        <input type="text" id="f-place" class="form-input" placeholder="الزقازيق أو اكتب المكان">
+      </div>
+      <div class="form-group">
+        <label class="form-label">اسم الميكب آرتست (اختياري)</label>
+        <input type="text" id="f-makeup" class="form-input" placeholder="اسم الميكب آرتست">
+      </div>
+
+      <div class="form-divider">إضافة تصوير ثاني</div>
+      <div class="form-group">
+        <label class="form-label">تصوير إضافي مع الباقة</label>
+        <select id="f-extra" class="form-select">
+          <option value="">لأ، الباقة الأساسية بس</option>
+          <option>+ تصوير القاعة</option>
+          <option>+ برومو فيديو</option>
+          <option>+ ريلز TikTok</option>
+          <option>+ سيشن خارجي إضافي</option>
+        </select>
+      </div>
+
+      <div class="form-divider">ملاحظات</div>
+      <div class="form-group">
+        <label class="form-label">تفاصيل إضافية</label>
+        <textarea id="f-notes" class="form-textarea" placeholder="الباكدج المطلوب · طلبات خاصة · أي ملاحظات..."></textarea>
+      </div>
+
+      <button class="form-submit" onclick="submitBooking()">📸 إرسال طلب الحجز</button>
+      <p class="form-note">بعد الإرسال هيتفتح <a href="https://wa.me/201069359200" target="_blank">واتساب</a> تلقائياً مع كل تفاصيلك</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════ DELIVERY ══════════════ -->
+<section id="delivery" style="background:var(--bg-card);">
+<div class="sw">
+  <div class="sec-head rv">
+    <div class="sec-eye">التسليم</div>
+    <h2 class="sec-h">استلام <em>الأوردر</em></h2>
+  </div>
+  <div class="del-grid rv">
+    <div class="del-card" onclick="showModal('💾 فلاشة USB','تسليم شخصي على فلاشة USB عالية الجودة.\nالحجم: ٢ جيجا وأكتر.\n\nكلمنا على واتساب لتحديد موعد الاستلام.')">
+      <div class="dc-badge">2GB+</div>
+      <span class="dc-icon">💾</span>
+      <h4>فلاشة USB</h4>
+      <p>تسليم شخصي عالي الجودة في الموعد المحدد.</p>
+    </div>
+    <div class="del-card" onclick="showModal('🔐 رابط + كلمة مرور','بعد استلام العربون وتأكيد الحجز، هتوصلك رسالة واتساب فيها:\n\n• رابط Download خاص بيك\n• اسم مستخدم\n• كلمة مرور\n\nالرابط شغال ٧ أيام من وقت الإرسال.\n\nكل العميل له رابط وكلمة مرور منفصلة.')">
+      <div class="dc-badge">SECURE</div>
+      <span class="dc-icon">🔐</span>
+      <h4>رابط + كلمة مرور</h4>
+      <p>رابط Download خاص + اسم مستخدم + كلمة مرور على واتساب.</p>
+    </div>
+    <div class="del-card" onclick="window.open('https://wa.me/201069359200','_blank')">
+      <div class="dc-badge">PRINT</div>
+      <span class="dc-icon">📦</span>
+      <h4>مطبوعات</h4>
+      <p>ألبومات · كانفاس · فريمات · تنسيق عبر واتساب.</p>
+    </div>
+  </div>
+  <div class="del-note rv">
+    <strong>⏱ مدة التسليم: من ١٥ إلى ٢٠ يوم</strong> من تاريخ المناسبة.<br>
+    يوجد تغطية ستوريهات وريلز للمناسبة هدية — حسب طلب العميل.<br>
+    <strong>🔑 كلمة المرور:</strong> بعد استلام العربون وتأكيد الحجز، بتوصلك رسالة واتساب فيها اسم المستخدم وكلمة المرور الخاصة بيك لتحميل صورك وفيديوهاتك.
+  </div>
+</div>
+</section>
+
+<!-- ══════════════ PAYMENT ══════════════ -->
+<section id="payment">
+<div class="sw">
+  <div class="sec-head rv">
+    <div class="sec-eye">الدفع</div>
+    <h2 class="sec-h">طرق <em>الدفع</em></h2>
+  </div>
+  <div class="pay-grid rv">
+    <div class="pay-card">
+      <span class="pay-icon">📱</span>
+      <h4>فودافون كاش</h4>
+      <p>الأسرع والأسهل — بعت العربون فوراً مباشرة على الرقم.</p>
+      <div class="pay-num">01069359200</div>
+    </div>
+    <div class="pay-card">
+      <span class="pay-icon">💳</span>
+      <h4>دفع أونلاين</h4>
+      <p>إنستاباي · فوري · أي محفظة إلكترونية — تحويل فوري.</p>
+      <div class="pay-num">تواصل على واتساب للتفاصيل</div>
+    </div>
+    <div class="pay-card">
+      <span class="pay-icon">🤝</span>
+      <h4>عند المقابلة الأولى</h4>
+      <p>دفع العربون نقداً في أول لقاء بعد الاتفاق على كل التفاصيل.</p>
+      <div class="pay-num">بالاتفاق</div>
+    </div>
+  </div>
+  <p class="pay-warn rv">⚠ الحجز لا يتأكد إلا بعد استلام العربون — وبعدها بتوصلك كلمة المرور الخاصة بيك على واتساب</p>
+</div>
+</section>
+
+<!-- ══════════════ CONTACT ══════════════ -->
+<section id="contact" style="background:var(--bg-card);">
+<div class="sw">
+  <div class="sec-head rv">
+    <div class="sec-eye">تواصل</div>
+    <h2 class="sec-h">كلمنا <em>دلوقتي</em></h2>
+  </div>
+  <div class="ctt-grid">
+    <div class="rv">
+      <div class="ctt-links">
+        <a href="https://wa.me/201069359200" target="_blank" class="ctt-link">
+          <span>💬</span>
+          <div><div class="ctt-link-l">WhatsApp</div><div class="ctt-link-s">01069359200</div></div>
+          <span class="ctt-link-arr">←</span>
+        </a>
+        <a href="tel:01069359200" class="ctt-link">
+          <span>📞</span>
+          <div><div class="ctt-link-l">اتصال مباشر</div><div class="ctt-link-s">01069359200</div></div>
+          <span class="ctt-link-arr">←</span>
+        </a>
+        <a href="https://www.instagram.com/zizo_photoghraphy" target="_blank" class="ctt-link">
+          <span>📸</span>
+          <div><div class="ctt-link-l">Instagram</div><div class="ctt-link-s">@zizo_photoghraphy</div></div>
+          <span class="ctt-link-arr">←</span>
+        </a>
+        <a href="https://www.facebook.com/share/1DrwWTd2YH/" target="_blank" class="ctt-link">
+          <span>📘</span>
+          <div><div class="ctt-link-l">Facebook</div><div class="ctt-link-s">Zizo Photography</div></div>
+          <span class="ctt-link-arr">←</span>
+        </a>
+        <a href="https://www.tiktok.com/@zizo_photographer" target="_blank" class="ctt-link">
+          <span>🎵</span>
+          <div><div class="ctt-link-l">TikTok</div><div class="ctt-link-s">@zizo_photographer</div></div>
+          <span class="ctt-link-arr">←</span>
+        </a>
+      </div>
+    </div>
+    <div class="rv">
+      <div class="map-ph">
+        <div style="font-size:2.5rem;opacity:.1;">📍</div>
+        <p>الزقازيق · الشرقية · مصر</p>
+        <p>Zagazig · Sharqia · Egypt</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Zizo Photography</div>
+    <div class="footer-copy">© 2026 Ahmed "Zizo" · Zagazig · Egypt · All Rights Reserved</div>
+    <div class="footer-copy"><a href="admin.html" style="color:var(--text-dim);text-decoration:none;">⚙ Admin</a></div>
+  </div>
+</footer>
+
+
+<!-- ── PHONE GATE ── -->
+<div id="phone-gate">
+  <div class="gate-box">
+    <div class="gate-logo">ZIZO</div>
+    <div class="gate-sub">Photography · Since 2010</div>
+    <div class="gate-title">أهلاً بيك 👋</div>
+    <div class="gate-desc">
+      لمتابعة الباقات والحجز<br>
+      ادخل رقم موبايلك أولاً
+    </div>
+    <input type="tel" id="gate-phone" class="gate-input"
+           placeholder="رقم الموبايل — 01XXXXXXXXX"
+           maxlength="11" inputmode="numeric">
+    <input type="email" id="gate-email" class="gate-input"
+           placeholder="إيميل (اختياري)">
+    <button class="gate-btn" onclick="gateEnter()">دخول الموقع ←</button>
+    <div class="gate-err" id="gate-err">من فضلك ادخل رقم موبايل صحيح</div>
+    <div class="gate-skip" onclick="gateSkip()">تخطي</div>
+  </div>
+</div>
+
+<!-- ── MODAL ── -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <h3 id="modal-title">✦</h3>
+    <p id="modal-msg"></p>
+    <button class="modal-close" onclick="closeModal()">تمام 👍</button>
+  </div>
+</div>
+
+<!-- ── SCRIPTS ── -->
+<script>
+// ── LOADER
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('ldr').classList.add('out'), 1200);
+});
+
+// ── NAV SCROLL
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', scrollY > 50);
+});
+
+// ── REVEAL ON SCROLL
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: .1 });
+document.querySelectorAll('.rv').forEach(el => ro.observe(el));
+
+// ── MODAL
+function showModal(title, msg) {
+  document.getElementById('modal-title').textContent = title;
+  document.getElementById('modal-msg').textContent = msg;
+  document.getElementById('modal').classList.add('open');
+}
+function closeModal() { document.getElementById('modal').classList.remove('open'); }
+
+// ── PACKAGE TABS
+function showPkg(type, btn) {
+  ['wedding','katb','session'].forEach(t => {
+    const el = document.getElementById('pkg-'+t);
+    if (el) el.style.display = t === type ? 'block' : 'none';
+  });
+  document.querySelectorAll('.ptab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// ── SELECT PACKAGE → fills form bar
+let selectedPackage = '';
+function selectPkg(name) {
+  selectedPackage = name;
+  const bar = document.getElementById('sel-pkg');
+  document.getElementById('sel-pkg-text').textContent = name;
+  bar.style.display = 'block';
+  document.getElementById('booking').scrollIntoView({ behavior:'smooth' });
+  showModal('✅ تم اختيار الباقة', `"${name}"\n\nاكمل بياناتك في النموذج أسفل الصفحة.`);
+}
+
+// ── GET CHECKED ADDONS
+function getAddons() {
+  return Array.from(document.querySelectorAll('.addon input:checked'))
+    .map(c => c.value).join(' · ') || 'لا يوجد';
+}
+
+// ── SUBMIT BOOKING
+function submitBooking() {
+  const phone = document.getElementById('f-phone').value.trim();
+  const type  = document.getElementById('f-type').value;
+  if (!phone || !type) {
+    showModal('⚠️ تنبيه', 'من فضلك ملي: الموبايل + نوع الجلسة على الأقل!');
+    return;
+  }
+
+  const id     = 'BK' + Date.now();
+  const groom  = document.getElementById('f-groom').value  || '—';
+  const bride  = document.getElementById('f-bride').value  || '—';
+  const date   = document.getElementById('f-date').value   || '—';
+  const time   = document.getElementById('f-time').value   || '—';
+  const place  = document.getElementById('f-place').value  || '—';
+  const makeup = document.getElementById('f-makeup').value || '—';
+  const extra  = document.getElementById('f-extra').value  || 'لأ';
+  const notes  = document.getElementById('f-notes').value  || '—';
+  const addons = getAddons();
+
+  // Save to localStorage (Admin panel reads this)
+  const booking = {
+    id, status: 'جديد',
+    date: new Date().toLocaleDateString('ar-EG'),
+    time: new Date().toLocaleTimeString('ar-EG'),
+    name: `${groom} & ${bride}`,
+    phone, type,
+    package: selectedPackage || type,
+    eventDate: date, eventTime: time,
+    place, groom, bride,
+    makeup, extra, addons, notes
+  };
+  const all = JSON.parse(localStorage.getItem('zizo_bookings') || '[]');
+  all.unshift(booking);
+  localStorage.setItem('zizo_bookings', JSON.stringify(all));
+
+  // Build WhatsApp message
+  let msg = `💍 Zizo Photography — طلب حجز ٢٠٢٦\n\n`;
+  msg += `📋 رقم الطلب: ${id}\n`;
+  if (groom !== '—')  msg += `💒 العريس: ${groom}\n`;
+  if (bride !== '—')  msg += `👰 العروسة: ${bride}\n`;
+  msg += `📱 الموبايل: ${phone}\n`;
+  msg += `📸 الجلسة: ${type}\n`;
+  if (selectedPackage)         msg += `📦 الباقة: ${selectedPackage}\n`;
+  if (extra && extra !== 'لأ') msg += `➕ إضافة: ${extra}\n`;
+  if (addons !== 'لا يوجد')   msg += `✦ إضافات: ${addons}\n`;
+  if (date  !== '—') msg += `📅 التاريخ: ${date}\n`;
+  if (time  !== '—') msg += `🕐 الوقت: ${time}\n`;
+  if (place !== '—') msg += `📍 المكان: ${place}\n`;
+  if (makeup !== '—') msg += `💄 الميكب: ${makeup}\n`;
+  if (notes !== '—') msg += `📝 ملاحظات: ${notes}\n`;
+
+  // Append gate visitor info if available
+  if (window._gatePhone && window._gatePhone !== phone) {
+    msg += `\n📲 زائر الموقع — موبايل: ${window._gatePhone}`;
+    if (window._gateEmail) msg += ` · إيميل: ${window._gateEmail}`;
+    msg += '\n';
+  } else if (window._gateEmail) {
+    msg += `📧 إيميل: ${window._gateEmail}\n`;
+  }
+  window.open(`https://wa.me/201069359200?text=${encodeURIComponent(msg)}`, '_blank');
+
+  showModal(
+    '✅ تم إرسال الحجز!',
+    `شكراً ${groom !== '—' ? groom : ''}!\n` +
+    `رقم طلبك: ${id}\n\n` +
+    `بعد استلام العربون، هتوصلك رسالة واتساب فيها:\n` +
+    `• اسم المستخدم\n• كلمة المرور لتحميل صورك ✅`
+  );
+
+  // Reset
+  ['f-groom','f-bride','f-phone','f-type','f-date',
+   'f-time','f-place','f-makeup','f-extra','f-notes'].forEach(id => {
+    const el = document.getElementById(id); if (el) el.value = '';
+  });
+  document.querySelectorAll('.addon input').forEach(c => c.checked = false);
+  selectedPackage = '';
+  document.getElementById('sel-pkg').style.display = 'none';
+}
+
+// ── PHONE GATE
+(function() {
+  // Don't show gate if already visited this session
+  if (sessionStorage.getItem('zizo_gate_done')) {
+    document.getElementById('phone-gate').style.display = 'none';
+  }
+})();
+
+function gateEnter() {
+  const phone = document.getElementById('gate-phone').value.trim();
+  const email = document.getElementById('gate-email').value.trim();
+  const err   = document.getElementById('gate-err');
+
+  // Validate phone: 10-11 digits starting with 0 or 1
+  if (!phone || !/^(01|1)\d{9}$/.test(phone.replace(/\s/g,''))) {
+    err.style.display = 'block';
+    document.getElementById('gate-phone').focus();
+    return;
+  }
+  err.style.display = 'none';
+
+  // Store visitor data
+  const visitor = {
+    phone, email,
+    time: new Date().toLocaleString('ar-EG'),
+    page: location.href
+  };
+  const visitors = JSON.parse(localStorage.getItem('zizo_visitors') || '[]');
+  visitors.unshift(visitor);
+  localStorage.setItem('zizo_visitors', JSON.stringify(visitors));
+  sessionStorage.setItem('zizo_gate_done', '1');
+
+  // Save for appending to booking
+  window._gatePhone = phone;
+  window._gateEmail = email;
+
+  // Pre-fill phone in form
+  const fp = document.getElementById('f-phone');
+  if (fp && !fp.value) fp.value = phone;
+
+  closeGate();
+}
+
+function gateSkip() {
+  sessionStorage.setItem('zizo_gate_done', '1');
+  closeGate();
+}
+
+function closeGate() {
+  const gate = document.getElementById('phone-gate');
+  gate.style.opacity = '0';
+  gate.style.transition = 'opacity .4s';
+  setTimeout(() => gate.style.display = 'none', 400);
+}
+
+// Enter key on gate inputs
+['gate-phone','gate-email'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('keydown', e => { if (e.key === 'Enter') gateEnter(); });
+});
+
+</script>
+</body>
+</html>
